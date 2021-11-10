@@ -1,0 +1,27 @@
+Aplikasi Persediaan Barang dengan PHP 7 dan MySQLi
+==========================================================================================================================================
+
+Bahasa Pemrograman 	: PHP v.7
+Database 		: MySQL
+Extension		: MySQLi Extension
+CSS Framework 		: Bootstrap 
+Template		: AdminLTE v.2.0.4
+Report			: html2pdf_v4.03
+Tools			: - Sublime, 
+			  - XAMPP 7.1.1
+
+==========================================================================================================================================
+
+PETUNJUK PENGGUNAAN
+
+1. Install XAMPP, Download disini https://www.apachefriends.org (disarankan memakai versi 7.1)
+2. Setelah XAMPP terinstall, buka Xampp Control Panel lalu Start Apache dan MySQL.
+3. Download Aplikasi Persediaan Barang dari google drive lalu extract file dan ubah nama folder menjadi persediaan. 
+4. Kemudian copy folder persedian dan paste ke folder ..\xampp\htdocs. 
+5. Kemudian buka browser dan masuk ke localhost/phpmyadmin, buat database baru dengan nama db_persediaan.
+6. Import file db_persediaan.sql yang ada difolder Database ke dalam database yang telah dibuat.
+7. Setting koneksi pada file database.php yang ada pada folrder config (sesuaikan dengan pengaturan server di komputer/laptop Anda)
+8. Untuk membuka program ketikan localhost/Aplikasi-Persediaan-Barang.
+9. Login user : Hak akses Super Admin 	: username admin, password 123
+		Hak akses Super Gudang 	: username user, password 123
+		Hak akses Super Manajer : username manajer, password 123
