@@ -138,7 +138,7 @@ if ($_GET['form'] == 'add') {
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <div class="col-sm-offset-10 col-sm-2">
+                                        <div class="col-sm-offset-9 col-sm-3 text-right">
                                             <button type="button" class="btn btn-primary btn-submit" name="simpan" onclick="simpanBarangMasuk()">Simpan</button>
                                             <a href="?module=barang_masuk" class="btn btn-default btn-reset">Batal</a>
                                         </div>

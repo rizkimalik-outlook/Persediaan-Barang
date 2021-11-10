@@ -26,8 +26,6 @@
             </a>
         </div>
     </h1>
-
-
 </section>
 
 <!-- Main content -->
@@ -43,6 +41,7 @@
                             <tr>
                                 <th class="center">No.</th>
                                 <th class="center">ID Barang</th>
+                                <th class="center">Kode Barang</th>
                                 <th class="center">Nama Barang</th>
                                 <th class="center">Jenis Barang</th>
                                 <th class="center">Stok</th>
@@ -53,7 +52,7 @@
                         <tbody>
                             <?php
                             if(isset($_GET['gudang'])){
-                                $query = mysqli_query($mysqli, "SELECT a.id_barang,a.nama_barang,a.id_jenis,a.id_satuan,a.stok,b.nama_jenis,c.nama_satuan,d.id_gudang
+                                $query = mysqli_query($mysqli, "SELECT a.id_barang,a.kode_barang,a.nama_barang,a.id_jenis,a.id_satuan,a.stok,b.nama_jenis,c.nama_satuan,d.id_gudang
                                                             FROM is_barang as a INNER JOIN is_jenis_barang as b INNER JOIN is_satuan as c INNER JOIN is_barang_masuk as d
                                                             ON a.id_jenis=b.id_jenis AND a.id_satuan=c.id_satuan AND a.id_barang=d.id_barang 
                                                             WHERE d.id_gudang='$_GET[gudang]'
@@ -63,7 +62,7 @@
 
                             }
                             else{
-                                $query = mysqli_query($mysqli, "SELECT a.id_barang,a.nama_barang,a.id_jenis,a.id_satuan,a.stok,b.nama_jenis,c.nama_satuan
+                                $query = mysqli_query($mysqli, "SELECT a.id_barang,a.kode_barang,a.nama_barang,a.id_jenis,a.id_satuan,a.stok,b.nama_jenis,c.nama_satuan
                                                             FROM is_barang as a INNER JOIN is_jenis_barang as b INNER JOIN is_satuan as c 
                                                             ON a.id_jenis=b.id_jenis AND a.id_satuan=c.id_satuan
                                                             ORDER BY a.id_barang DESC")
@@ -78,6 +77,7 @@
                                 echo "<tr>
                                 <td width='30' class='center'>$no</td>
                                 <td width='80' class='center'>$data[id_barang]</td>
+                                <td width='80' class='center'>$data[kode_barang]</td>
                                 <td width='200'>$data[nama_barang]</td>
                                 <td width='170'>$data[nama_jenis]</td>";
                                             if ($data['stok'] <= 10) { ?>
