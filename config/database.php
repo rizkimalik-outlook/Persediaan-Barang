@@ -3,7 +3,7 @@
 $server   = "localhost";
 $username = "root";
 $password = "kosong07";
-$database = "db_persediaan";
+$database = "db_gudang";
 
 // koneksi database
 $mysqli = new mysqli($server, $username, $password, $database);

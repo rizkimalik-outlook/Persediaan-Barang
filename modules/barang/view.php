@@ -60,6 +60,7 @@
                             <tr>
                                 <th class="center">No.</th>
                                 <th class="center">ID Barang</th>
+                                <th class="center">Kode Barang</th>
                                 <th class="center">Nama Barang</th>
                                 <th class="center">Jenis Barang</th>
                                 <th class="center">Stok</th>
