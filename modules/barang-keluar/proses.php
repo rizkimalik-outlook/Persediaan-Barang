@@ -40,8 +40,8 @@ else {
             $exp             = explode('-',$tanggal);
             $tanggal_keluar   = $exp[2]."-".$exp[1]."-".$exp[0];
 
-            $query = mysqli_multi_query($mysqli, "INSERT INTO is_barang_keluar(id_barang_keluar,tanggal_keluar,id_barang,id_gudang,id_rak,jumlah_keluar,created_user) 
-                                            VALUES('$id_barang_keluar','$tanggal_keluar','$row[id_barang]','$row[id_gudang]','$row[id_rak]','$row[jumlah_keluar]','$created_user')")
+            $query = mysqli_multi_query($mysqli, "INSERT INTO is_barang_keluar(id_barang_keluar,tanggal_keluar,no_doc,id_barang,id_gudang,id_rak,jumlah_keluar,created_user) 
+                                            VALUES('$id_barang_keluar','$tanggal_keluar','$row[no_doc]','$row[id_barang]','$row[id_gudang]','$row[id_rak]','$row[jumlah_keluar]','$created_user')")
                 or die('Ada kesalahan pada query insert : ' . mysqli_error($mysqli));
            
             if ($query) {

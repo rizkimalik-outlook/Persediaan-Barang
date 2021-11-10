@@ -82,6 +82,7 @@
                 <th class="center">No.</th>
                 <th class="center">ID Transaksi</th>
                 <th class="center">Tanggal</th>
+                <th class="center">No Doc</th>
                 <th class="center">ID Barang</th>
                 <th class="center">Nama Barang</th>
                 <th class="center">Kode Rak</th>
@@ -100,7 +101,7 @@
                 $is_gudang = "";
             }
                                             
-            $query = mysqli_query($mysqli, "SELECT a.id_barang_keluar,a.tanggal_keluar,a.jumlah_keluar,a.status,
+            $query = mysqli_query($mysqli, "SELECT a.id_barang_keluar,a.tanggal_keluar,a.jumlah_keluar,a.status,a.no_doc,
                                             b.id_barang,b.nama_barang,b.stok,
                                             c.id_satuan,c.nama_satuan,
                                             d.kode_rak, d.nama_rak,
@@ -131,6 +132,7 @@
                         <td width='30' class='center'>$no</td>
                         <td width='100' class='center'>$data[id_barang_keluar]</td>
                         <td width='90' class='center'>$tanggal_keluar</td>
+                        <td width='80' class='center'>$data[no_doc]</td>
                         <td width='80' class='center'>$data[id_barang]</td>
                         <td width='150'>$data[nama_barang]</td>
                         <td width='80' class='center'>$data[kode_rak]</td>
@@ -156,6 +158,7 @@
                         <td width='30' class='center'>$no</td>
                         <td width='100' class='center'>$data[id_barang_keluar]</td>
                         <td width='90' class='center'>$tanggal_keluar</td>
+                        <td width='80' class='center'>$data[no_doc]</td>
                         <td width='80' class='center'>$data[id_barang]</td>
                         <td width='200'>$data[nama_barang]</td>
                         <td width='80' class='center'>$data[kode_rak]</td>

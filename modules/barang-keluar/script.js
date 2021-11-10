@@ -4,6 +4,7 @@ function setStoreBarangKeluar() {
     let old_data =  old_value === null ? old_value = [] : JSON.parse(old_value);
 
     let data = [{
+        no_doc: form.elements['no_doc'].value,
         tanggal_keluar: form.elements['tanggal_keluar'].value,
         id_gudang: form.elements['id_gudang'].value,
         id_rak: form.elements['id_rak'].value,
@@ -33,6 +34,7 @@ function getStoreBarangKeluar(){
     for (let i = 0; i < data.length; i++) {
         html += `<tr>
             <td>${no++}</td>
+            <td>${data[i].no_doc}</td>
             <td>${data[i].tanggal_keluar}</td>
             <td>${data[i].id_barang}</td>
             <td>${data[i].nama_barang}</td>

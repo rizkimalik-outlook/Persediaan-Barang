@@ -40,4 +40,17 @@ if(isset($_POST['id_barang'])) {
     echo json_encode($data_barang);
 }
 
+/* 
+SELECT a.id_barang_masuk,e.stok,b.id_rak,b.kode_rak,b.nama_rak,d.nama_satuan
+                                            FROM is_barang_masuk as a 
+                                            INNER JOIN is_rak as b 
+                                            INNER JOIN is_barang as c 
+                                            INNER JOIN is_satuan as d 
+                                            INNER JOIN view_stok as e 
+                                            ON a.id_rak=b.id_rak 
+                                            AND a.id_barang=c.id_barang
+                                            AND c.id_satuan=d.id_satuan
+                                            AND a.id_barang=e.id_barang
+                                           AND a.id_gudang=e.id_gudang
+                                            GROUP BY a.id_barang_masuk,e.stok,b.id_rak,b.kode_rak,b.nama_rak,d.nama_satuan */
 ?> 

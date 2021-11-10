@@ -52,12 +52,12 @@
                         <tbody>
                             <?php
                             if(isset($_GET['gudang'])){
-                                $query = mysqli_query($mysqli, "SELECT a.id_barang,a.kode_barang,a.nama_barang,a.id_jenis,a.id_satuan,a.stok,b.nama_jenis,c.nama_satuan,d.id_gudang
-                                                            FROM is_barang as a INNER JOIN is_jenis_barang as b INNER JOIN is_satuan as c INNER JOIN is_barang_masuk as d
-                                                            ON a.id_jenis=b.id_jenis AND a.id_satuan=c.id_satuan AND a.id_barang=d.id_barang 
-                                                            WHERE d.id_gudang='$_GET[gudang]'
-                                                            GROUP BY a.id_barang,a.nama_barang,a.id_jenis,a.id_satuan,a.stok,b.nama_jenis,c.nama_satuan,d.id_gudang
-                                                            ORDER BY a.id_barang DESC")
+                                $query = mysqli_query($mysqli, "SELECT a.id_barang,a.kode_barang,a.nama_barang,a.id_jenis,a.id_satuan,b.nama_jenis,c.nama_satuan,d.stok
+                                                                FROM is_barang as a INNER JOIN is_jenis_barang as b INNER JOIN is_satuan as c INNER JOIN view_stok as d 
+                                                                ON a.id_jenis=b.id_jenis AND a.id_satuan=c.id_satuan AND a.id_barang=d.id_barang
+                                                                WHERE d.id_gudang='$_GET[gudang]'
+                                                                GROUP BY a.id_barang,a.nama_barang,a.id_jenis,a.id_satuan,a.stok,b.nama_jenis,c.nama_satuan,d.stok
+                                                                ORDER BY a.id_barang DESC")
                                 or die('Ada kesalahan pada query tampil Data Barang: ' . mysqli_error($mysqli));
 
                             }

@@ -1,7 +1,7 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        <i class="fa fa-file-text-o icon-title"></i> Laporan Stok Barang
+        <i class="fa fa-file-text-o icon-title"></i> Data Barang
         <div class="pull-right">
             <div class="btn-group">
                 <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -10,13 +10,13 @@
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="?module=form_barang">Semua Data</a></li>
+                    <li><a href="?module=barang">Semua Data</a></li>
                     <li class="divider"></li>
                     <?php
                     $query_gudang = mysqli_query($mysqli, "SELECT id_gudang,nama_gudang FROM is_gudang ORDER BY id_gudang ASC")
                         or die('Ada kesalahan pada query tampil Gudang: ' . mysqli_error($mysqli));
                     while ($data_gudang = mysqli_fetch_assoc($query_gudang)) {
-                        echo "<li><a href='?module=form_barang&gudang=$data_gudang[id_gudang]'>$data_gudang[nama_gudang]</a></li>";
+                        echo "<li><a href='?module=barang&gudang=$data_gudang[id_gudang]'>$data_gudang[nama_gudang]</a></li>";
                     }
                     ?>
                 </ul>
@@ -93,12 +93,12 @@
                             $no = 1;
                             // fungsi query untuk menampilkan data dari tabel barang
                             if(isset($_GET['gudang'])){
-                                $query = mysqli_query($mysqli, "SELECT a.id_barang,a.kode_barang,a.nama_barang,a.id_jenis,a.id_satuan,a.stok,b.nama_jenis,c.nama_satuan,d.id_gudang
-                                                            FROM is_barang as a INNER JOIN is_jenis_barang as b INNER JOIN is_satuan as c INNER JOIN is_barang_masuk as d
-                                                            ON a.id_jenis=b.id_jenis AND a.id_satuan=c.id_satuan AND a.id_barang=d.id_barang 
-                                                            WHERE d.id_gudang='$_GET[gudang]'
-                                                            GROUP BY a.id_barang,a.nama_barang,a.id_jenis,a.id_satuan,a.stok,b.nama_jenis,c.nama_satuan,d.id_gudang
-                                                            ORDER BY a.id_barang DESC")
+                                $query = mysqli_query($mysqli, "SELECT a.id_barang,a.kode_barang,a.nama_barang,a.id_jenis,a.id_satuan,b.nama_jenis,c.nama_satuan,d.stok
+                                                                FROM is_barang as a INNER JOIN is_jenis_barang as b INNER JOIN is_satuan as c INNER JOIN view_stok as d 
+                                                                ON a.id_jenis=b.id_jenis AND a.id_satuan=c.id_satuan AND a.id_barang=d.id_barang
+                                                                WHERE d.id_gudang='$_GET[gudang]'
+                                                                GROUP BY a.id_barang,a.nama_barang,a.id_jenis,a.id_satuan,a.stok,b.nama_jenis,c.nama_satuan,d.stok
+                                                                ORDER BY a.id_barang DESC")
                                 or die('Ada kesalahan pada query tampil Data Barang: ' . mysqli_error($mysqli));
 
                             }

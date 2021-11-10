@@ -26,6 +26,34 @@ if ($_GET['form'] == 'add') {
                     <!-- <form role="form" class="form-horizontal" action="modules/barang-keluar/proses.php?act=insert" method="POST" name="formBarangKeluar"> -->
                     <form role="form" class="form-horizontal" action="javascript:setStoreBarangKeluar();" method="POST" name="formBarangKeluar">
                         <div class="box-body">
+                            <?php
+                            // fungsi untuk membuat no doc
+                            $query_id = mysqli_query($mysqli, "SELECT RIGHT(no_doc,5) as kode FROM is_barang_keluar
+                                                ORDER BY id_barang_keluar DESC LIMIT 1")
+                                or die('Ada kesalahan pada query tampil no_doc : ' . mysqli_error($mysqli));
+
+                            $count = mysqli_num_rows($query_id);
+
+                            if ($count <> 0) {
+                                // mengambil data no_doc
+                                $data_id = mysqli_fetch_assoc($query_id);
+                                $kode    = $data_id['kode'] + 1;
+                            } else {
+                                $kode = 1;
+                            }
+
+                            $tahun           = date("Y");
+                            $bulan           = date("m");
+                            $buat_id         = str_pad($kode, 5, "0", STR_PAD_LEFT);
+                            $no_doc = "BK-$tahun-$bulan-$buat_id";
+                            ?>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">No Doc</label>
+                                <div class="col-sm-5">
+                                    <input type="text" class="form-control" name="no_doc" value="<?php echo $no_doc; ?>" readonly required>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Tanggal</label>
                                 <div class="col-sm-5">
@@ -103,6 +131,7 @@ if ($_GET['form'] == 'add') {
                                         <thead>
                                             <tr>
                                                 <th class="center bg-primary">No.</th>
+                                                <th class="center bg-primary">No Doc</th>
                                                 <th class="center bg-primary">Tanggal</th>
                                                 <th class="center bg-primary">ID Barang</th>
                                                 <th class="center bg-primary">Nama Barang</th>
@@ -125,7 +154,8 @@ if ($_GET['form'] == 'add') {
                                     <a href="?module=barang_keluar" class="btn btn-default btn-reset">Batal</a>
                                 </div>
                             </div>
-                        </div> --><!-- /.box footer -->
+                        </div> -->
+                        <!-- /.box footer -->
                     </form>
                 </div><!-- /.box -->
             </div>
